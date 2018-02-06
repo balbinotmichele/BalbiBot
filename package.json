@@ -1,0 +1,16 @@
+{
+  "name": "botprova1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "botgram": "^2.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": ""
+  },
+  "start": "node index"
+  "author": "",
+  "license": "ISC"
+}
