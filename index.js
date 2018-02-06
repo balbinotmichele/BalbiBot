@@ -10,7 +10,7 @@ bot.command("encrypt", (msg, reply, next) => {
   let chiave = normalize(keyword);
   let testo = normalize(text);
   if(text != undefined) {
-      Enc(testo, chiave);
+      reply.text(Encrypt(testo, chiave));
   }
   else reply.text("Add some text after the /encrypt command");
 });
@@ -59,20 +59,23 @@ bot.command("decrypt", (msg, reply, next) => {
 });*/
 
 var chars = "abcdefghijklmnopqrstuvwxyz";
-function Enc(testoinchiaro, chiave) {
+
+function Enc(testoinchiaro = "", chiave = "") {
+  if (testoinchiaro == "" || chiave == "") return;
   while(testoinchiaro.length % chiave.length != 0) //il testo e la chiave sono minuscoli e senza spazi
     testoinchiaro += "x"; //riempie il testo fino a che sia un "rettangolo"
-  let k=0, j = 0;
+  let j = 0, a = 0, res = [];
   let testocifrato = "";
-  for(let i = 0; i < chiave.length; i++) {
-    for (k in chars) {
-      var t = chiave.indexOf(chars.charAt(k));
-      res[j] = k; j++;
-      if (t >= 0) break;
-      else k++;
-      console.log(t);
+  for(let k in chiave) {
+    while (a < alpha.length) {
+      if(k == a) {
+        var ind = chiave.indexOf(alpha.charAt(a)); //restituisce la posizione del carattere 
+        res[j] = i++;
+      }
+      j++;
     }
   }
+  console.log(res);
 }
 
 bot.command((msg, reply) =>
@@ -97,7 +100,7 @@ bot.command((msg, reply) =>
               else k++;
               //console.log(t);
           }
-          for (j = 0; j < colLength; j++) {
+          for (j = 0; j < colLength; j++) { 
               ciphertext += plaintext.charAt(j * klen + t);
           }
       }
@@ -134,8 +137,8 @@ bot.command((msg, reply) =>
 }
   
   function normalize(value) {
-      console.log(value);
-      /*if(value != undefined)
+      //console.log(value);
+      if(value != undefined)
         return value.toLowerCase().replace(/[^a-z]/g, "");
-      else return*/
+      else return
   }
